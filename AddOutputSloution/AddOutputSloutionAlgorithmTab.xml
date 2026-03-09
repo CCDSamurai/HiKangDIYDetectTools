@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AlgorithmTabRoot>
+    <Tabs>
+        <Tab Name="Tab_Basic Params">
+            <Categorys>
+                <GroupLinkItem Name="ImageSourceGroup">
+                    <LinkName>ImageSourceGroup</LinkName>
+                </GroupLinkItem>
+                <Category Name="Tab_ROI Area">
+                    <Items>
+                        <GroupLinkItem Name="RoiSelectGroup">
+                            <LinkName>RoiSelectGroup</LinkName>
+                        </GroupLinkItem>
+                        <ROISelecter Name="RoiType">
+                            <Description>Shape</Description>
+                            <DisplayName>Shape</DisplayName>
+                            <Visibility>Beginner</Visibility>
+                            <AccessMode>RW</AccessMode>
+                            <FullScreenEnable>True</FullScreenEnable>
+                            <SelectType>Single</SelectType>
+                            <CustomVisible>False</CustomVisible>
+                            <ROISelection>Box</ROISelection>
+                        </ROISelecter>
+                        <GroupLinkItem Name="InheritWayGroup">
+                            <LinkName>InheritWayGroup</LinkName>
+                        </GroupLinkItem>
+                    </Items>
+                </Category>
+                <Category Name="Class Inputs">
+                    <Items>
+                        <ButtonSelecter Name="onnxLoads">
+                            <Description>模型文件加载</Description>
+                            <DisplayName>模型文件加载</DisplayName>
+                            <Visibility>Beginner</Visibility>
+                            <AccessMode>O</AccessMode>
+                            <CustomVisible>True</CustomVisible>
+                            <DropOpenSetter>
+                                <TargetName>EnumEntrys</TargetName>
+                                <OperationName>GetFrontFilterTreeOperation</OperationName>
+                                <OperationParams>string</OperationParams>
+                            </DropOpenSetter>
+                            <Triggers>
+                                <Trigger>
+                                    <Property>CurValue</Property>
+                                    <Setters>
+                                        <Setter>
+                                            <OperationName>SetFilterSourceOperation</OperationName>
+                                            <OperationParams>onnxLoad</OperationParams>
+                                        </Setter>
+                                    </Setters>
+                                </Trigger>
+                            </Triggers>
+                            <Initers>
+                                <Setter>
+                                    <TargetName>CurValue</TargetName>
+                                    <OperationName>GetSelectedFilterOperation</OperationName>
+                                    <OperationParams>onnxLoad</OperationParams>
+                                </Setter>
+                            </Initers>
+                        </ButtonSelecter>
+                    </Items>
+                </Category>
+            </Categorys>
+        </Tab>
+        <Tab Name="Tab_Run Params">
+            <Categorys>
+                <Category Name="Tab_Run Params">
+                    <Items>
+                        <Integer Name="ChooseModel" NameSpace="Standard">
+                            <Description>选择模型样式</Description>
+                            <DisplayName>选择模型样式</DisplayName>
+                            <AccessMode>RW</AccessMode>
+                            <MinValue>0</MinValue>
+                            <MaxValue>2</MaxValue>
+                            <CurValue>1</CurValue>
+                            <IncValue>1</IncValue>
+                        </Integer>
+                    </Items>
+                </Category>
+            </Categorys>
+        </Tab>
+        <Tab Name="ResultShow">
+            <Categorys>
+                <Category Name="Tab_Image Display">
+                    <Items>
+                        <ImageViewConfig Name="CheckZone">
+                            <Description>ROI</Description>
+                            <DisplayName>ROI</DisplayName>
+                            <Visibility>Beginner</Visibility>
+                            <AccessMode>O</AccessMode>
+                            <BrigdgeSetter>
+                                <TargetName>BridgeObj</TargetName>
+                                <OperationName>GetDisplayObjectOperation</OperationName>
+                                <OperationParams>ROI</OperationParams>
+                            </BrigdgeSetter>
+                        </ImageViewConfig>
+                    </Items>
+                </Category>
+            </Categorys>
+        </Tab>
+    </Tabs>
+    <BottomExcuteButtonsLeft>
+        <Button_ResetAlgoParams Name="Button_ResetAlgoParams">
+            <Visibility>Beginner</Visibility>
+            <AccessMode>O</AccessMode>
+        </Button_ResetAlgoParams>
+    </BottomExcuteButtonsLeft>
+    <BottomExcuteButtons>
+        <GroupLinkItem Name="BottomCommandGroup">
+            <LinkName>BottomCommandGroup</LinkName>
+        </GroupLinkItem>
+    </BottomExcuteButtons>
+</AlgorithmTabRoot>
